@@ -1,0 +1,79 @@
+A. derived quantities
+   foil added mass A33 [kg]: [2.63 2.63 2.41]  (craft mass 215.0)
+   MA over [w,p,q]: diag [ 7.67  5.9  20.85]  -> +3.6% heave, +19.0% roll, +4.1% pitch inertia
+   fore-foil circulation [0.169 0.169] m^2/s, upwash at the aft foil 2.59 cm/s = 0.21 deg extra incidence
+   wake image check on the free surface: max tangential |v| 0.0e+00 m/s (0 = high-Froude condition), max normal |v| 0.689 m/s
+   U= 5.0: Wagner time constants 175.8 / 26.7 ms (reference fixes them at U=7: 125.6 / 19.0 ms)
+   U= 7.0: Wagner time constants 125.6 / 19.0 ms (reference fixes them at U=7: 125.6 / 19.0 ms)
+   U=12.0: Wagner time constants 73.3 / 11.1 ms (reference fixes them at U=7: 125.6 / 19.0 ms)
+
+B. trim at 7 m/s, CG 0.30 m above the water
+   reference       fore  3.290  aft  2.985 deg  rpm  1170.4
+   added_mass      fore  3.290  aft  2.985 deg  rpm  1170.4
+   speed_scaling   fore  3.290  aft  2.985 deg  rpm  1170.4
+   lift_lag_only   fore  3.290  aft  2.985 deg  rpm  1170.4
+   roll_inflow     fore  3.290  aft  2.985 deg  rpm  1170.4
+   ventilation     fore  3.290  aft  2.985 deg  rpm  1170.4
+   downwash        fore  3.290  aft  2.771 deg  rpm  1168.8
+   actuator_rate   fore  3.290  aft  2.985 deg  rpm  1170.4
+   v2 (all)        fore  3.290  aft  2.771 deg  rpm  1168.8
+   open-loop poles (reference): [-6.6243e+01+0.j    -1.5483e+01+0.j    -1.2564e+01+0.j
+ -1.6610e+00+0.j    -1.0000e-03+0.j     1.1600e-01-0.091j
+  1.1600e-01+0.091j]
+   open-loop poles (added_mass): [-5.5651e+01+0.j    -1.4874e+01+0.j    -1.2114e+01+0.j
+ -1.6640e+00+0.j    -1.0000e-03+0.j     1.1600e-01-0.091j
+  1.1600e-01+0.091j]
+
+C. +0.2 m ride-height step (thesis Sec 5.2.1), controllers designed on the reference model
+   plant           ctrl         ISE     IAE    ITAE  effort  max|dδ/dt|
+   reference       LQI-SW     1.206   1.355   1.634   1.281      65.4°/s 
+   reference       MPC-IDP    0.139   0.295   0.163   0.665      53.9°/s 
+   added_mass      LQI-SW     1.197   1.347   1.624   1.264      65.4°/s 
+   added_mass      MPC-IDP    0.141   0.296   0.163   0.661      53.1°/s 
+   speed_scaling   LQI-SW     1.207   1.356   1.636   1.283      65.4°/s 
+   speed_scaling   MPC-IDP    0.139   0.295   0.163   0.665      54.0°/s 
+   lift_lag_only   LQI-SW     1.206   1.355   1.634   1.281      65.4°/s 
+   lift_lag_only   MPC-IDP    0.139   0.295   0.163   0.665      54.0°/s 
+   roll_inflow     LQI-SW     1.206   1.355   1.634   1.281      65.4°/s 
+   roll_inflow     MPC-IDP    0.139   0.295   0.163   0.665      53.9°/s 
+   ventilation     LQI-SW     1.206   1.355   1.634   1.281      65.4°/s 
+   ventilation     MPC-IDP    0.139   0.295   0.163   0.665      53.9°/s 
+   downwash        LQI-SW     1.209   1.362   1.649   1.300      64.7°/s 
+   downwash        MPC-IDP    0.139   0.293   0.163   0.674      53.7°/s 
+   actuator_rate   LQI-SW     1.209   1.356   1.636   1.282      60.0°/s 
+   actuator_rate   MPC-IDP    0.139   0.295   0.163   0.665      53.9°/s 
+   v2 (all)        LQI-SW     1.202   1.356   1.641   1.285      60.0°/s 
+   v2 (all)        MPC-IDP    0.140   0.293   0.163   0.669      53.0°/s 
+
+D. supervised AUTO, 7 m/s, head seas (20 s window after the sea builds)
+   Hs 0.2 Tp 2.5  ref plant / ref MPC : heave std  1.84 cm  pitch std 0.44  roll std 0.00 deg  min sub 0.343 m  failed=False  (24s)
+   Hs 0.2 Tp 2.5  v2 plant / ref MPC  : heave std  1.84 cm  pitch std 0.44  roll std 0.00 deg  min sub 0.343 m  failed=False  (32s)
+   Hs 0.2 Tp 2.5  v2 plant / v2 MPC   : heave std  1.83 cm  pitch std 0.44  roll std 0.00 deg  min sub 0.343 m  failed=False  (35s)
+   Hs 0.4 Tp 3.0  ref plant / ref MPC : heave std  5.69 cm  pitch std 0.99  roll std 0.00 deg  min sub 0.174 m  failed=False  (24s)
+   Hs 0.4 Tp 3.0  v2 plant / ref MPC  : heave std  5.85 cm  pitch std 1.02  roll std 0.00 deg  min sub 0.174 m  failed=False  (26s)
+   Hs 0.4 Tp 3.0  v2 plant / v2 MPC   : heave std  5.80 cm  pitch std 1.01  roll std 0.00 deg  min sub 0.174 m  failed=False  (17s)
+
+E. ventilation
+   fore foil ventilates going shallower at h = 3.9 cm, re-attaches going deeper at h = 12.4 cm (set: 4 / 12 cm)
+   lift at h=3 cm: wetted branch n/a, ventilated 165 N; at h=8 cm descending 653 N vs ascending 196 N
+   Hs 0.5, ride height 0.55 m, reference plant  : min sub 0.000 m, time below 4 cm  4.6%, heave std  8.47 cm, pitch std 1.78 deg, failed=False
+   Hs 0.5, ride height 0.55 m, ventilation only : min sub 0.000 m, time below 4 cm 12.5%, heave std 13.44 cm, pitch std 3.03 deg, failed=False
+   Hs 0.5, ride height 0.55 m, v2 plant         : min sub 0.000 m, time below 4 cm 10.2%, heave std 13.14 cm, pitch std 3.15 deg, failed=False
+
+F. actuator rate limit (60 deg/s): step with LQI-SW
+   reference      : max |rate|   65.4 deg/s, time at limit 0.2%
+   actuator_rate  : max |rate|   60.0 deg/s, time at limit 0.2%
+
+G. roll: linear roll damping and beam seas
+   reference               : dp'/dp =  -66.24 1/s  ->  K_p = -2053.5 N m s/rad, roll control dp'/d(dFS) =  -129.6
+   roll_inflow             : dp'/dp =  -62.35 1/s  ->  K_p = -1933.0 N m s/rad, roll control dp'/d(dFS) =  -129.6
+   roll_inflow+added_mass  : dp'/dp =  -52.38 1/s  ->  K_p = -1933.0 N m s/rad, roll control dp'/d(dFS) =  -108.9
+   beam sea Hs 0.4, reference   : roll std 0.290 deg, heave std 1.62 cm, roll-rate std 1.99 deg/s, failed=False
+   beam sea Hs 0.4, roll_inflow : roll std 0.293 deg, heave std 1.62 cm, roll-rate std 2.15 deg/s, failed=False
+   beam sea Hs 0.4, v2 (all)    : roll std 0.302 deg, heave std 1.66 cm, roll-rate std 2.25 deg/s, failed=False
+
+H. off-design speeds (speed scaling active): 7 -> 5 m/s, then 5 -> 13 m/s
+   calm, reference        |  5.02 m/s: heave std  0.05 cm, height err  0.15 cm max | 13.00 m/s: heave std  0.00 cm, height err  0.00 cm max | failed=False
+   calm, v2 (all)         |  5.01 m/s: heave std  0.05 cm, height err  0.12 cm max | 13.00 m/s: heave std  0.00 cm, height err  0.00 cm max | failed=False
+   Hs 0.2, reference      |  5.12 m/s: heave std  1.81 cm, height err  6.82 cm max | 13.00 m/s: heave std  1.12 cm, height err  4.97 cm max | failed=False
+   Hs 0.2, v2 (all)       |  5.12 m/s: heave std  1.82 cm, height err  6.95 cm max | 13.00 m/s: heave std  1.13 cm, height err  5.13 cm max | failed=False

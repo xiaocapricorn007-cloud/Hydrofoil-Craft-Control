@@ -1,0 +1,12 @@
+# gz <-> ROS 2 bridge for the hydrofoil craft
+- {ros_topic_name: "/clock", gz_topic_name: "/clock", ros_type_name: "rosgraph_msgs/msg/Clock", gz_type_name: "gz.msgs.Clock", direction: GZ_TO_ROS}
+- {ros_topic_name: "/hydrofoil/odom", gz_topic_name: "/hydrofoil/odom", ros_type_name: "nav_msgs/msg/Odometry", gz_type_name: "gz.msgs.Odometry", direction: GZ_TO_ROS}
+- {ros_topic_name: "/hydrofoil/debug", gz_topic_name: "/hydrofoil/debug", ros_type_name: "ros_gz_interfaces/msg/Float32Array", gz_type_name: "gz.msgs.Float_V", direction: GZ_TO_ROS}
+- {ros_topic_name: "/hydrofoil/imu", gz_topic_name: "/hydrofoil/imu", ros_type_name: "sensor_msgs/msg/Imu", gz_type_name: "gz.msgs.IMU", direction: GZ_TO_ROS}
+- {ros_topic_name: "/hydrofoil/cmd/foil_fs", gz_topic_name: "/hydrofoil/cmd/foil_fs", ros_type_name: "std_msgs/msg/Float64", gz_type_name: "gz.msgs.Double", direction: ROS_TO_GZ}
+- {ros_topic_name: "/hydrofoil/cmd/foil_fp", gz_topic_name: "/hydrofoil/cmd/foil_fp", ros_type_name: "std_msgs/msg/Float64", gz_type_name: "gz.msgs.Double", direction: ROS_TO_GZ}
+- {ros_topic_name: "/hydrofoil/cmd/foil_a", gz_topic_name: "/hydrofoil/cmd/foil_a", ros_type_name: "std_msgs/msg/Float64", gz_type_name: "gz.msgs.Double", direction: ROS_TO_GZ}
+- {ros_topic_name: "/hydrofoil/cmd/rpm", gz_topic_name: "/hydrofoil/cmd/rpm", ros_type_name: "std_msgs/msg/Float64", gz_type_name: "gz.msgs.Double", direction: ROS_TO_GZ}
+- {ros_topic_name: "/hydrofoil/env/params", gz_topic_name: "/hydrofoil/env/params", ros_type_name: "ros_gz_interfaces/msg/Float32Array", gz_type_name: "gz.msgs.Float_V", direction: ROS_TO_GZ}
+- {ros_topic_name: "/hydrofoil/env/waves", gz_topic_name: "/hydrofoil/env/waves", ros_type_name: "ros_gz_interfaces/msg/Float32Array", gz_type_name: "gz.msgs.Float_V", direction: ROS_TO_GZ}
+- {ros_topic_name: "/hydrofoil/camera", gz_topic_name: "/hydrofoil/camera", ros_type_name: "sensor_msgs/msg/Image", gz_type_name: "gz.msgs.Image", direction: GZ_TO_ROS}

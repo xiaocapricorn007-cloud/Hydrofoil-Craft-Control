@@ -1,0 +1,18 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# ROS 2 build output (build_ws.sh builds outside the repo, but just in case)
+ros_ws/build/
+ros_ws/install/
+ros_ws/log/
+
+# regenerable run data
+logs/*.npz
+figures/*.npy
+setup/phase0_install.log
+
+# MATLAB package manager binary (download it from MathWorks; see setup/matlab/install_toolboxes.ps1)
+setup/matlab/mpm.exe

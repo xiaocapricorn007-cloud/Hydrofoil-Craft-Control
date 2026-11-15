@@ -1,0 +1,5 @@
+[[2.0, "env", {"sea": {"hs": 0.3, "tp": 2.8, "dir": 0}}],
+ [14.0, "env", {"wind": {"speed": 10, "dir": 60, "gust": 0.25}, "current": {"speed": 0.5, "dir": 180}}],
+ [20.0, "env", {"water": {"temp": 25, "salinity": 0}}],
+ [24.0, "accel", [0.6, 0.6]], [24.0, "speed", 9.0],
+ [32.0, "env", {"sea": {"hs": 0.4, "tp": 3.2, "dir": 45, "spread": true}}]]

@@ -1,0 +1,7 @@
+[[3.0, "env", {"physics": "v2"}],
+ [6.0, "height", 0.42],
+ [10.0, "heel", 3.0],
+ [14.0, "env", {"physics": "ref"}],
+ [16.0, "heel", 0.0],
+ [18.0, "env", {"physics": "downwash,ventilation"}],
+ [20.0, "height", 0.3]]
